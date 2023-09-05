@@ -1,0 +1,10 @@
+.feedback_card {
+}
+.feedback_head {
+}
+.feedback_btn {
+}
+.btn_thumb {
+  display: flex;
+  gap: 10px;
+}
