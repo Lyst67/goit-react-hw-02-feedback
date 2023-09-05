@@ -1,5 +1,5 @@
 import { Component } from "react"
-import {FeedbackOptions} from './FeedbackOptions/FeedbackOptions'
+// import {FeedbackOptions} from './FeedbackOptions/FeedbackOptions'
 import css from './App.module.css'
 
 class App extends Component  {
