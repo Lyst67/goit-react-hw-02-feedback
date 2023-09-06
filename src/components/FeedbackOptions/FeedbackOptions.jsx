@@ -1,4 +1,4 @@
-import css from '../App.module.css'
+// import css from '../App.module.css'
 
 export const FeedbackOptions = ({options, onLeaveFeedback}) => {
     options = Object.entries(options)
