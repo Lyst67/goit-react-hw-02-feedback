@@ -1,5 +1,6 @@
 import { Component } from "react"
-// import {FeedbackOptions} from './FeedbackOptions/FeedbackOptions'
+import { Controls } from "./Controls/Controls"
+import {FeedbackOptions} from './FeedbackOptions/FeedbackOptions'
 import css from './App.module.css'
 
 class App extends Component  {
@@ -8,17 +9,25 @@ class App extends Component  {
   neutral: 0,
   bad: 0
   }
-  handleGoodCount = () => {
+
+  // options = Object.entries(this.state)
+  // onLeaveFeedback = (key) => {
+  //   this.setState((prevState, [key, value]) => ({
+  //     key: prevState.value + 1,
+  //   }))
+  // }
+  
+  onLeaveFeedback1 = () => {
     this.setState(prevState => ({
       good: prevState.good + 1,
     }))
   }
-  handleNeutralCount = () => {
+ onLeaveFeedback2 = () => {
     this.setState(prevState => ({
       neutral: prevState.neutral + 1,
     }))
   }
-  handleBadCount = () => {
+  onLeaveFeedback3 = () => {
     this.setState(prevState => ({
       bad: prevState.bad + 1,
     }))
@@ -31,20 +40,18 @@ class App extends Component  {
           <h1 className={css.feedback_head}>
             Please leave feedback
           </h1>
-          <div className={css.btn_thumb}>
-            <button type="button" className={css.feedback_btn} onClick={this.handleGoodCount}>Good</button>
-            <button type="button" className={css.feedback_btn} onClick={this.handleNeutralCount}>Neutral</button>
-            <button type="button" className={css.feedback_btn} onClick={this.handleBadCount}>Bad</button>
-          </div>
+          <Controls 
+            onLeaveFeedback1= { this.onLeaveFeedback1}
+          onLeaveFeedback2= {this.onLeaveFeedback2}
+          onLeaveFeedback3= {this.onLeaveFeedback3}
+           />
           <div className={css.feedback_stat}>
             <h2 className={css.stat_head}>Statistics</h2>
-            <p>Good: <span>{this.state.good}</span></p>
-            <p>Neutral: <span>{this.state.neutral}</span></p>
-            <p>Bad: <span>{this.state.bad}</span></p>
-            {/* <FeedbackOptions
-              options={ }
-            onLeaveFeedback={ }
-            /> */}
+           
+            <FeedbackOptions
+              options={this.state}
+            // onLeaveFeedback={ }
+            />
           </div>
          
     </div >
