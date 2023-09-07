@@ -1,6 +1,6 @@
 import { Component } from "react"
-import { Controls } from "./Controls/Controls"
-import {FeedbackOptions} from './FeedbackOptions/FeedbackOptions'
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions'
+import { Statistics } from "./Statistics/Statistics"
 import css from './App.module.css'
 
 class App extends Component  {
@@ -10,56 +10,46 @@ class App extends Component  {
   bad: 0
   }
 
-  // options = Object.entries(this.state)
-  // onLeaveFeedback = (key) => {
-  //   this.setState((prevState, [key, value]) => ({
-  //     key: prevState.value + 1,
-  //   }))
-  // }
-  
-  onLeaveFeedback1 = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }))
+  onLeaveFeedback = ({ target: { name } }) => {
+    this.setState((prevState) => ({ 
+        [name]: prevState[name] + 1,
+      })) 
+    }
+  countTotalFeedback = () => {
+    return Object.values(this.state).reduce((acc, elem) => { return acc += elem }, 0);
   }
- onLeaveFeedback2 = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }))
+  countPositiveFeedbackPercentage = () => {
+    let good = this.state.good
+    if (good > 0) { return Math.round(good * 100) / this.countTotalFeedback() };
+    return 0;
   }
-  onLeaveFeedback3 = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }))
-  }
+
  
   render() {
+    this.countTotalFeedback()
+    this.countPositiveFeedbackPercentage()
+    console.log(this.countTotalFeedback())
+    console.log(this.countPositiveFeedbackPercentage())
     return (
        <>
         <div className={css.feedback_card}>
-          <h1 className={css.feedback_head}>
-            Please leave feedback
-          </h1>
-          <Controls 
-            onLeaveFeedback1= { this.onLeaveFeedback1}
-          onLeaveFeedback2= {this.onLeaveFeedback2}
-          onLeaveFeedback3= {this.onLeaveFeedback3}
-           />
-          <div className={css.feedback_stat}>
-            <h2 className={css.stat_head}>Statistics</h2>
-           
-            <FeedbackOptions
+            <h1 className={css.feedback_head}>Please leave feedback</h1>
+                <FeedbackOptions
+                  options={this.state}
+                onLeaveFeedback={this.onLeaveFeedback }
+          /> 
+          <Statistics
               options={this.state}
-            // onLeaveFeedback={ }
-            />
-          </div>
-         
-    </div >
-       </>
-     
-  )
+          //  good={this.state.good}
+          //   neutral={this.state.neutral}
+          //   bad={this.state.bad}
+          //   total={ }
+          //   positivePercentage={ }
+          ></Statistics>
+         </div >
+       </>  
+     )
   }
- 
 };
 
 export default App
