@@ -23,13 +23,13 @@ li {
   display: flex;
   gap: 20px;
   justify-content: center;
-  cursor: pointer;
 }
 .feedback_btn {
   padding: 6px 12px;
   border-radius: 6px;
   background-color: #aee8ee;
   text-transform: capitalize;
+  cursor: pointer;
   transition: color 250ms linear, background-color 250ms linear;
 }
 .feedback_btn:is(:hover, :focus) {
