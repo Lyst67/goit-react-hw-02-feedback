@@ -1,20 +1,25 @@
 import css from '../App.module.css'
 import { nanoid } from 'nanoid'
 
-export const Statistics = ({ options }) => {
-    options = Object.entries(options)
+export const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+    const options = [
+        { value: good, title: 'Good: ' },
+        { value: neutral, title: 'Neutral: ' },
+        { value: bad, title: 'Bad: ' },
+        { value: total, title: 'Total: '},
+        { value: [positivePercentage, ' %'], title: 'Positive feedback: ' }]
+
     return (
-        <>
-         <h2 className={css.stat_head}>Statistics</h2>  
-                    {options.map(([key, value]) => { 
+        <> 
+            <ul>
+                {options.map(({value, title}) => {
                     return (
-                                <div key={nanoid()}>
-                                   <p >{key}: <span>{value}</span></p>
-                                </div>
+                        <li key={nanoid()}>
+                            <p >{title}: <span>{value}</span></p>
+                        </li>
                             )})
-            
                     } 
-        </>
-        
+            </ul>              
+        </> 
     )
 }
