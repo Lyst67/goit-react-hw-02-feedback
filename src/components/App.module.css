@@ -19,8 +19,6 @@ li {
 .section_title {
   font-size: 32px;
 }
-.feedback_btn {
-}
 .btn_thumb {
   display: flex;
   gap: 20px;

@@ -26,9 +26,7 @@ class App extends Component  {
     return 0;
   }
 
- 
   render() {
-  
     return (
        <>
          <div className={css.feedback_card}>
@@ -51,12 +49,7 @@ class App extends Component  {
                      positivePercentage={this.countPositiveFeedbackPercentage()}
                    />    
             )}
-           
-            
-                  </Section>
-                   
-                    
-                
+                  </Section>     
           </div >
        </>  
      )

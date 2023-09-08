@@ -1,4 +1,3 @@
-import css from '../App.module.css'
 import { nanoid } from 'nanoid'
 
 export const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
