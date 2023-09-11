@@ -2,14 +2,13 @@ import css from '../App.module.css'
 import { nanoid } from 'nanoid'
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-    options = Object.entries(options)
             return (
                     <div className={css.btn_thumb} >
-                        {options.map(([key]) => {
+                    {options.map((option) => {
                              return (
-                                 <button type="button" name={key} key={nanoid()}
+                                 <button type="button" name={option} key={nanoid()}
                                      className={css.feedback_btn}
-                                    onClick={onLeaveFeedback}>{key}</button>   
+                                    onClick={onLeaveFeedback}>{option}</button>   
                              )
                         })}
                     </div>

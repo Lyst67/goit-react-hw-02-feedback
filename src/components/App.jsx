@@ -27,12 +27,13 @@ class App extends Component  {
   }
 
   render() {
+   const options = Object.keys(this.state)
     return (
        <>
          <div className={css.feedback_card}>
           <Section title="Please leave feedback">
              <FeedbackOptions
-                     options={this.state}
+                     options={options}
                      onLeaveFeedback={this.onLeaveFeedback }
                    /> 
           </Section>
